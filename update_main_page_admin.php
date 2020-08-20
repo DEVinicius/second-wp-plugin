@@ -15,13 +15,13 @@ License:
 
 class SecondPlugin
 {
-    private $instance;
+    private static $instance;
 
-    public function getInstance()
+    public static function getInstance()
     {
         if(self::$instance == NULL)
         {
-            self::$instance = new self()
+            self::$instance = new self();
         }
     }
 
