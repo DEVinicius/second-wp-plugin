@@ -10,16 +10,37 @@ Text Domain:
 License:
 */
 
-/*Desativar plugin anterior (welcome_panel) */
-remove_action('welcome_panel', 'wp_welcome_panel');
 
-function updateMainPage()
+//utilização do Design Pattern Sigleton
+
+class SecondPlugin
 {
-    ?>
-        <div class="welcome-panel-content">
-            <h3>Vinicius Pereira de oLiveira</h3>
-        </div>
-    <?php 
+    private $instance;
+
+    public function getInstance()
+    {
+        if(self::$instance == NULL)
+        {
+            self::$instance = new self()
+        }
+    }
+
+    private function __construct()
+    {
+        remove_action('welcome_panel', 'wp_welcome_panel');
+
+        function updateMainPage()
+        {
+            ?>
+                <div class="welcome-panel-content">
+                    <h3>Vinicius Pereira de oLiveira</h3>
+                </div>
+            <?php 
+        }
+        
+        add_action('welcome_panel', 'updateMainPage');
+    }
 }
- 
-add_action('welcome_panel', 'updateMainPage');
+
+SecondPlugin::getInstance();
+
