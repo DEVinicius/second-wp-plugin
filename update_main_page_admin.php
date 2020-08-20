@@ -16,7 +16,8 @@ remove_action('welcome_panel', 'wp_welcome_panel');
 function updateMainPage()
 {
     ?>
-        <div>
+        <div class="welcome-panel-content">
+            <h3>Vinicius Pereira de oLiveira</h3>
         </div>
     <?php 
 }
