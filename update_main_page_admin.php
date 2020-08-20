@@ -9,3 +9,16 @@ Author URI:
 Text Domain:
 License:
 */
+
+/*Desativar plugin anterior (welcome_panel) */
+remove_action('welcome_panel', 'wp_welcome_panel');
+
+function updateMainPage()
+{
+    ?>
+        <div>
+        </div>
+    <?php 
+}
+ 
+add_action('welcome_panel', 'updateMainPage');
